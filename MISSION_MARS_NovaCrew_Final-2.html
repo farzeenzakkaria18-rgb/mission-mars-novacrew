@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#1a1013">
+<title>MISSION MARS | NovaCrew</title>
+<style>
+:root{--bg:#160f12;--panel:#24191b;--panel2:#302124;--line:#604044;--cream:#f7e9d7;--muted:#c5a99a;--orange:#ff8b54;--gold:#f6c66a;--green:#82d6a0;--red:#ff6e68;--blue:#8ecbdf}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--cream);font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}button{font:inherit;cursor:pointer;color:inherit;border:1px solid var(--line);background:#3a2829;border-radius:12px;padding:10px 13px}button:active{transform:scale(.98)}button:disabled{opacity:.35;cursor:not-allowed}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:#120c0f;border-bottom:1px solid #56383a;position:sticky;top:0;z-index:5} .brand{display:flex;align-items:center;gap:10px}.logo{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(140deg,#ffb06a,#9d3f36);font-size:21px;box-shadow:0 0 22px #e46c4844}.brand strong{letter-spacing:2px;font-size:15px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2px}.headright{display:flex;gap:7px;align-items:center}.pill{font-size:11px;border:1px solid var(--line);padding:6px 9px;border-radius:30px;color:var(--gold)}
+main{max-width:1250px;margin:auto;padding:14px;display:grid;grid-template-columns:minmax(0,1.7fr) minmax(280px,.8fr);gap:14px}.scene-wrap{position:relative;border:1px solid #684447;border-radius:18px;overflow:hidden;background:#a94f3d;min-height:430px;box-shadow:0 14px 50px #0005}.scene{height:100%;min-height:430px;position:relative;overflow:hidden;background:linear-gradient(#5b3544 0%,#b45d48 45%,#d27a4e 69%,#8d3d30 100%)}.stars{position:absolute;inset:0;background-image:radial-gradient(#ffe4c9 1px,transparent 1.5px),radial-gradient(#fff 1px,transparent 1.5px);background-size:97px 81px,143px 113px;background-position:12px 4px,56px 28px;opacity:.45}.sun{position:absolute;right:12%;top:10%;width:70px;height:70px;border-radius:50%;background:#ffcc8b;box-shadow:0 0 50px #ffc27a99}.planet{position:absolute;right:8%;top:7%;font-size:26px;opacity:.65}.mountain{position:absolute;bottom:24%;width:120%;height:45%;left:-10%;background:#8d3d39;clip-path:polygon(0 80%,12% 36%,23% 65%,37% 9%,50% 62%,63% 25%,78% 70%,91% 32%,100% 75%,100% 100%,0 100%);opacity:.8}.mountain.back{bottom:27%;background:#73363a;transform:scaleX(-1);opacity:.75}.ground{position:absolute;bottom:0;height:35%;width:100%;background:linear-gradient(180deg,#b45a3d,#71302c);clip-path:polygon(0 18%,18% 5%,38% 23%,60% 8%,78% 21%,100% 4%,100% 100%,0 100%)}.ridge{position:absolute;bottom:13%;height:17%;width:120%;left:-5%;border-radius:50%;background:#632d2b;opacity:.42}.habitat{position:absolute;left:8%;bottom:23%;width:155px;height:118px;cursor:pointer;filter:drop-shadow(0 7px 6px #391b1b77)}.hab-dome{position:absolute;left:25px;top:0;width:92px;height:66px;border:5px solid #f3c28e;border-bottom:0;border-radius:90px 90px 0 0;background:linear-gradient(130deg,#a6c8c7aa,#496b70cc)}.hab-base{position:absolute;bottom:0;left:0;width:145px;height:61px;border:4px solid #d8a47d;background:linear-gradient(120deg,#60464a,#332d39);clip-path:polygon(10% 0,90% 0,100% 100%,0 100%);border-radius:7px}.hab-window{position:absolute;bottom:22px;left:51px;width:23px;height:19px;background:#ffcb79;border:3px solid #ad6b4f;border-radius:4px}.antenna{position:absolute;left:111px;top:-26px;width:3px;height:38px;background:#e6c5a1;transform:rotate(13deg)}.antenna:after{content:"";position:absolute;top:-7px;left:-8px;width:17px;height:13px;border:2px solid #f5d8ae;border-radius:50%}
+.solar{position:absolute;right:8%;bottom:25%;width:135px;height:85px;cursor:pointer;transform:skewY(-8deg)}.solar:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,#244f6a 0 23px,#8bc2d1 24px 26px),repeating-linear-gradient(0deg,transparent 0 20px,#b3e1e9 21px 23px);border:4px solid #c5d7d1;box-shadow:0 0 12px #2228}.solar:after{content:"";position:absolute;left:65px;top:80px;width:5px;height:48px;background:#c9a080;transform:skewY(8deg)}.greenhouse{position:absolute;right:29%;bottom:22%;width:104px;height:86px;cursor:pointer}.gh-dome{position:absolute;inset:0;border:4px solid #bce0cc;border-radius:55px 55px 8px 8px;background:linear-gradient(140deg,#b7e6d255,#426b5b99)}.gh-plant{position:absolute;bottom:6px;left:35px;font-size:34px}.station-tag{position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:10px;white-space:nowrap;background:#211719cc;padding:3px 7px;border-radius:20px;border:1px solid #ffffff44}.astronaut{position:absolute;left:45%;bottom:17%;font-size:53px;z-index:2;transition:left .22s,bottom .22s;filter:drop-shadow(0 5px 4px #321a1a88);user-select:none}.rock{position:absolute;bottom:13%;left:72%;font-size:35px;opacity:.7}.scene-label{position:absolute;left:14px;top:12px;background:#241619b9;border:1px solid #ffffff35;border-radius:10px;padding:7px 10px;font-size:11px;letter-spacing:1px}.scene-label b{color:#ffd28b}.scene-hint{position:absolute;bottom:10px;left:12px;right:12px;text-align:center;font-size:11px;color:#ffe6d2;text-shadow:0 1px 3px #3b1717}.hotspot{position:absolute;z-index:3;border:1px solid #ffe3b5;background:#251719c9;color:#ffe7c9;border-radius:30px;padding:6px 10px;font-size:11px;box-shadow:0 0 14px #ffb56b55}.hotspot:before{content:"●";color:var(--gold);margin-right:5px}
+.left-controls{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:10px 0 0}.move{display:flex;gap:5px}.move button{min-width:42px;padding:8px}.right{display:flex;gap:7px}.side{display:flex;flex-direction:column;gap:12px}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:13px}.card h3{margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:#f6c99c}.solrow{display:flex;justify-content:space-between;align-items:center}.solnum{font-size:25px;font-weight:800;color:var(--gold)}.meter{margin:9px 0}.meter-head{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px}.track{height:9px;background:#100d10;border-radius:10px;overflow:hidden;border:1px solid #493438}.fill{height:100%;width:50%;border-radius:10px;transition:width .3s}.oxygen{background:linear-gradient(90deg,#b83e3e,#f6a16a)}.power{background:linear-gradient(90deg,#b37a30,#f7d26b)}.food{background:linear-gradient(90deg,#3c9568,#9de0a4)}.water{background:linear-gradient(90deg,#367caa,#8dd6e6)}.rad{background:linear-gradient(90deg,#a43f49,#e78b80)}.stat-note{font-size:10px;color:var(--muted)}.objective{font-size:12px;padding:7px 0;border-bottom:1px solid #493438}.objective:last-child{border:0}.objective.done{color:var(--green);text-decoration:line-through}.log{max-height:160px;overflow:auto;font-size:11px;color:#d6bdb0}.log p{margin:5px 0;padding-left:9px;border-left:2px solid #a75a4c}.log p.alert{border-color:var(--red);color:#ffb0a8}.log p.good{border-color:var(--green)}.actionbar{display:flex;gap:7px;flex-wrap:wrap}.primary{background:linear-gradient(120deg,#f08a50,#bd4d3e);border:0;font-weight:800;color:#241316}.subtle{background:#211719}.panel-modal{position:fixed;inset:0;background:#080608c9;z-index:10;display:none;align-items:flex-end;justify-content:center;padding:12px}.panel-modal.show{display:flex}.modal{width:min(600px,100%);max-height:88vh;overflow:auto;background:#211719;border:1px solid #85504b;border-radius:20px;padding:18px;box-shadow:0 20px 80px #000b}.modal-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.modal h2{margin:0;color:#ffd19c;font-size:21px}.modal p{color:#e1cabe;font-size:13px}.modal .science{background:#302124;border-left:3px solid var(--blue);padding:10px;border-radius:8px;font-size:12px}.choices{display:grid;gap:8px;margin-top:12px}.choices button{text-align:left;padding:12px}.choices button strong{display:block;color:#ffcf9a}.choices button small{display:block;color:#c9ada0;margin-top:3px}.toast{position:fixed;top:75px;left:50%;transform:translateX(-50%);z-index:20;background:#201719;border:1px solid #ffbf83;border-radius:25px;padding:8px 14px;font-size:12px;display:none;box-shadow:0 5px 25px #0008}.toast.show{display:block}.intro{position:fixed;inset:0;background:radial-gradient(ellipse at 50% 35%,#713a38,#170e13 70%);z-index:30;display:flex;align-items:center;justify-content:center;padding:18px}.introbox{max-width:620px;text-align:center;border:1px solid #a46151;background:#241719eF;border-radius:24px;padding:26px;box-shadow:0 20px 80px #0009}.introbox .planetbig{font-size:65px}.introbox h1{font-size:clamp(28px,7vw,48px);line-height:1;margin:10px 0;color:#ffbd83;letter-spacing:2px}.introbox p{color:#e2c8b6;font-size:14px}.introbox .small{font-size:11px;color:#b99586}.report-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0}.report-grid div{background:#302124;padding:10px;border-radius:10px}.report-grid b{display:block;font-size:20px;color:var(--gold)}footer{text-align:center;color:#8f7169;font-size:10px;padding:12px}
+@media(max-width:820px){main{grid-template-columns:1fr;padding:9px;gap:10px}.scene-wrap,.scene{min-height:390px}.side{display:grid;grid-template-columns:1fr 1fr}.side .wide{grid-column:1/-1}.headright .pill{display:none}.left-controls{padding-top:8px}.habitat{left:5%;transform:scale(.83);transform-origin:bottom left}.solar{right:5%;transform:scale(.8) skewY(-8deg);transform-origin:bottom right}.greenhouse{right:28%;transform:scale(.85);transform-origin:bottom center}}
+@media(max-width:430px){.scene-wrap,.scene{min-height:355px}.side{grid-template-columns:1fr 1fr}.card{padding:10px}.astronaut{font-size:45px}.sun{width:54px;height:54px}.habitat{transform:scale(.7);left:2%}.solar{transform:scale(.68) skewY(-8deg);right:2%}.greenhouse{transform:scale(.7);right:26%}.station-tag{font-size:9px}.scene-label{font-size:9px}.right button{font-size:11px;padding:8px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="logo">🚀</div><div><strong>MISSION MARS</strong><small>NOVACREW • JUNIOR ASTRONAUT TRAINER</small></div></div><div class="headright"><span class="pill">SIMULATION // 01</span><button class="subtle" id="helpBtn">HOW TO PLAY</button></div></header>
+<main>
+<section>
+ <div class="scene-wrap"><div class="scene" id="scene">
+  <div class="stars"></div><div class="sun"></div><div class="planet">◉</div><div class="mountain back"></div><div class="mountain"></div><div class="ground"></div><div class="ridge"></div>
+  <div class="habitat" data-station="habitat" aria-label="Habitat"><div class="antenna"></div><div class="hab-dome"></div><div class="hab-base"></div><div class="hab-window"></div><span class="station-tag">HABITAT / LIFE SUPPORT</span></div>
+  <div class="greenhouse" data-station="greenhouse"><div class="gh-dome"></div><div class="gh-plant">🌱</div><span class="station-tag">GREENHOUSE</span></div>
+  <div class="solar" data-station="solar"><span class="station-tag">SOLAR ARRAY</span></div>
+  <div class="astronaut" id="astronaut">🧑‍🚀</div><div class="rock">🪨</div>
+  <button class="hotspot" style="left:7%;top:51%" data-station="habitat">LIFE SUPPORT</button>
+  <button class="hotspot" style="right:5%;top:51%" data-station="solar">POWER</button>
+  <button class="hotspot" style="right:29%;top:62%" data-station="greenhouse">FOOD LAB</button>
+  <button class="hotspot" style="left:42%;top:72%" data-station="radiation">RADIATION</button>
+  <button class="hotspot" style="left:42%;top:14%" data-station="comms">EARTH LINK</button>
+  <div class="scene-label"><b>ARES OUTPOST 01</b> &nbsp; • &nbsp; UTOPIA PLANITIA REGION</div>
+  <div class="scene-hint">TAP A STATION TO OPERATE IT • MOVE YOUR ASTRONAUT WITH THE ARROWS</div>
+ </div></div>
+ <div class="left-controls"><div class="move"><button id="left">◀</button><button id="up">▲</button><button id="down">▼</button><button id="rightMove">▶</button></div><div class="right"><button id="mapBtn">📍 OBJECTIVES</button><button class="primary" id="nextSol">END SOL →</button></div></div>
+</section>
+<aside class="side">
+ <div class="card"><div class="solrow"><div><div class="stat-note">MISSION CLOCK</div><div class="solnum" id="sol">SOL 01 / 10</div></div><div style="text-align:right"><div class="stat-note">MISSION SCORE</div><b style="font-size:23px;color:var(--gold)" id="score">000</b></div></div><div class="stat-note" id="weather">WEATHER: CLEAR • UV WATCH: NORMAL</div></div>
+ <div class="card"><h3>Life support telemetry</h3>
+  <div class="meter"><div class="meter-head"><span>🫁 Oxygen reserve</span><b id="oxygenVal">82%</b></div><div class="track"><div class="fill oxygen" id="oxygenBar"></div></div></div>
+  <div class="meter"><div class="meter-head"><span>⚡ Stored power</span><b id="powerVal">76%</b></div><div class="track"><div class="fill power" id="powerBar"></div></div></div>
+  <div class="meter"><div class="meter-head"><span>🥬 Food reserve</span><b id="foodVal">68%</b></div><div class="track"><div class="fill food" id="foodBar"></div></div></div>
+  <div class="meter"><div class="meter-head"><span>💧 Water reserve</span><b id="waterVal">72%</b></div><div class="track"><div class="fill water" id="waterBar"></div></div></div>
+  <div class="meter"><div class="meter-head"><span>☢ Radiation dose index</span><b id="radVal">12%</b></div><div class="track"><div class="fill rad" id="radBar"></div></div></div>
+ </div>
+ <div class="card"><h3>Mission objectives</h3><div id="objectives">
+  <div class="objective" id="obj-life">□ Keep oxygen above 25%</div><div class="objective" id="obj-power">□ Finish with power above 15%</div><div class="objective" id="obj-food">□ Finish with food above 15%</div><div class="objective" id="obj-rad">□ Keep radiation below 70%</div><div class="objective" id="obj-crop">□ Harvest greenhouse at least once</div><div class="objective" id="obj-comms">□ Receive a mission-control message</div>
+ </div></div>
+ <div class="card wide"><h3>Mission control • activity log</h3><div class="log" id="log"><p class="good">SOL 1 // Ares Outpost online. Crew systems nominal.</p><p>Mission control: “Your crew is in charge. Earth cannot respond instantly.”</p></div></div>
+</aside>
+</main>
+<footer>MISSION MARS • NOVACREW • An educational simulation — not an operational life-support design.</footer>
+<div class="toast" id="toast"></div>
+<div class="panel-modal" id="modal"><div class="modal"><div class="modal-head"><h2 id="modalTitle">Station</h2><button id="closeModal">✕</button></div><div id="modalBody"></div></div></div>
+<div class="intro" id="intro"><div class="introbox"><div class="planetbig">🔴 🧑‍🚀</div><div class="small">NOVACREW PRESENTS</div><h1>MISSION<br>MARS</h1><p><b>Junior Astronaut Mission Trainer</b><br>Ten sols. One outpost. Every decision matters.</p><p>You are the mission commander at Ares Outpost. Balance oxygen, power, food, water and radiation protection. Earth is far away — solve emergencies with the crew and systems on Mars.</p><p class="small">Simulation values are invented for gameplay. The science concepts and references are based on NASA material.</p><button class="primary" id="startGame" style="padding:13px 26px">BEGIN 10-SOL MISSION 🚀</button></div></div>
+<script>
+(()=>{
+const $=id=>document.getElementById(id);
+let s={sol:1,oxygen:82,power:76,food:68,water:72,rad:12,dust:18,crops:0,harvested:false,comms:false,score:0,shield:false,filter:false,greenhouseOn:true,alive:true,ended:false,x:45,y:17,weather:'CLEAR',events:[]};
+const clamp=n=>Math.max(0,Math.min(100,Math.round(n)));
+const log=(msg,type='')=>{let p=document.createElement('p');p.textContent=`SOL ${s.sol} // ${msg}`;if(type)p.className=type;$('log').prepend(p);while($('log').children.length>22)$('log').lastChild.remove()};
+const toast=msg=>{let t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)};
+function render(){
+ $('sol').textContent=`SOL ${String(Math.min(s.sol,10)).padStart(2,'0')} / 10`;$('score').textContent=String(s.score).padStart(3,'0');
+ [['oxygen','oxygen'],['power','power'],['food','food'],['water','water'],['rad','rad']].forEach(([k,id])=>{$(id+'Val').textContent=s[k]+'%';$(id+'Bar').style.width=s[k]+'%';$(id+'Bar').style.filter=s[k]<25&&k!=='rad'?'saturate(1.6) brightness(1.2)':'none'});
+ $('radVal').textContent=s.rad+'%';$('radBar').style.width=s.rad+'%';$('weather').textContent=`WEATHER: ${s.weather} • DUST LOAD: ${s.dust}%`;
+ const checks={life:s.oxygen>25,power:s.power>15,food:s.food>15,rad:s.rad<70,crop:s.harvested,comms:s.comms};
+ Object.entries(checks).forEach(([k,v])=>{$('obj-'+k).classList.toggle('done',v);$('obj-'+k).textContent=(v?'✓ ':'□ ')+({life:'Keep oxygen above 25%',power:'Finish with power above 15%',food:'Finish with food above 15%',rad:'Keep radiation below 70%',crop:'Harvest greenhouse at least once',comms:'Receive a mission-control message'}[k])});
+ $('astronaut').style.left=s.x+'%';$('astronaut').style.bottom=s.y+'%';
+}
+function modal(title,body){$('modalTitle').textContent=title;$('modalBody').innerHTML=body;$('modal').classList.add('show')}
+function close(){ $('modal').classList.remove('show') }
+$('closeModal').onclick=close;$('modal').addEventListener('click',e=>{if(e.target===$('modal'))close()});
+function action(text,desc,fn,disabled=false){return `<button ${disabled?'disabled':''} data-action="${encodeURIComponent(text)}"><strong>${text}</strong><small>${desc}</small></button>`}
+function station(key){
+ if(!s.alive||s.ended)return;
+ let title='',body='';
+ if(key==='habitat'){
+ title='🫁 HABITAT • LIFE SUPPORT';
+ body=`<p>Maintain cabin pressure, scrub carbon dioxide and protect the crew's breathable oxygen reserve.</p><div class="science">SCIENCE LINK — Mars’ atmosphere is mostly carbon dioxide and is far too thin to breathe. NASA’s MOXIE experiment demonstrated oxygen production from Martian CO₂. This game abstracts a future crew-scale life-support loop.</div><div class="choices">
+ ${action('Service oxygen recycler','Costs 12 power • +22 oxygen',()=>{if(s.power<12)return toast('Not enough power');s.power-=12;s.oxygen=clamp(s.oxygen+22);s.score+=12;log('Oxygen recycler serviced. Cabin reserve restored.','good')})}
+ ${action('Replace CO₂ scrubber cartridge','Costs 8 power • +14 oxygen stability',()=>{if(s.power<8)return toast('Not enough power');s.power-=8;s.oxygen=clamp(s.oxygen+14);s.score+=8;log('CO₂ scrubber cartridge replaced.','good')})}
+ ${action('Emergency low-power mode','Save 8 power • oxygen drops 4',()=>{s.power=clamp(s.power+8);s.oxygen=clamp(s.oxygen-4);s.score+=4;log('Non-essential habitat loads throttled.')})}
+ </div>`;
+ }
+ if(key==='solar'){
+ title='⚡ SOLAR ARRAY • POWER';
+ body=`<p>Inspect the photovoltaic field. Dust reduces incoming sunlight; power is needed by nearly every station.</p><div class="science">SCIENCE LINK — NASA notes that dust storms can persist for months and reduce the reliability of solar power. Real mission architectures also study fission surface power. The game models a solar-only outpost to make energy trade-offs visible.</div><div class="choices">
+ ${action('Brush panels clean','Costs 5 power • removes 55% dust',()=>{if(s.power<5)return toast('Not enough power');s.power-=5;s.dust=clamp(s.dust-55);s.score+=10;log('Solar panels cleaned. Generation efficiency improved.','good')})}
+ ${action('Deploy extra panel wing','Costs 12 power • +18 stored power',()=>{if(s.power<12)return toast('Not enough power');s.power=clamp(s.power+18);s.score+=10;log('Auxiliary panel wing deployed.','good')})}
+ ${action('Power conservation protocol','Reduce next-sol load • +10 power now',()=>{s.power=clamp(s.power+10);s.score+=5;log('Crew switched off non-critical equipment.')})}
+ </div>`;
+ }
+ if(key==='greenhouse'){
+ title='🌱 GREENHOUSE • FOOD PRODUCTION';
+ body=`<p>Grow leafy crops in a controlled environment. Plants need water, light, nutrients and energy.</p><div class="science">SCIENCE LINK — NASA studies plant growth and crop systems to support long-duration exploration. This greenhouse is a simplified closed-environment model, not a claim that crops can independently feed a Mars crew.</div><div class="choices">
+ ${action('Plant / tend crops','Costs 7 water + 8 power • progress crop cycle',()=>{if(s.water<7||s.power<8)return toast('Need more water and power');s.water-=7;s.power-=8;s.crops++;s.score+=8;log('Greenhouse crop cycle advanced.','good')})}
+ ${action('Harvest ready crops','Requires 2 crop cycles • +25 food',()=>{if(s.crops<2)return toast('Crops need two tending cycles first');s.crops=0;s.food=clamp(s.food+25);s.harvested=true;s.score+=18;log('Fresh produce harvested. Food reserve increased.','good')})}
+ ${action('Recycle irrigation water','Costs 5 power • +12 water',()=>{if(s.power<5)return toast('Not enough power');s.power-=5;s.water=clamp(s.water+12);s.score+=6;log('Condensate and irrigation water recovered.')})}
+ </div>`;
+ }
+ if(key==='radiation'){
+ title='☢ RADIATION • STORM SHELTER';
+ body=`<p>Monitor solar activity and move the crew into a shielded storm shelter when an alert arrives.</p><div class="science">SCIENCE LINK — Mars lacks Earth’s global magnetic-field protection and has a thin atmosphere. Radiation exposure is a major human-spaceflight hazard. Habitat shielding and storm-shelter concepts reduce risk; this game uses a relative dose index, not medical units.</div><div class="choices">
+ ${action('Enter storm shelter','Costs 10 power • reduce dose index by 22',()=>{if(s.power<10)return toast('Not enough power');s.power-=10;s.rad=clamp(s.rad-22);s.shield=true;s.score+=12;log('Crew secured in storm shelter. Radiation exposure reduced.','good')})}
+ ${action('Inspect shielding seals','Costs 4 power • reduce dose index by 8',()=>{if(s.power<4)return toast('Not enough power');s.power-=4;s.rad=clamp(s.rad-8);s.score+=7;log('Shelter seals inspected and reinforced.','good')})}
+ ${action('Stay outside and continue work','No power cost • risk +10 dose',()=>{s.rad=clamp(s.rad+10);s.score+=2;log('Crew continued exterior work during elevated radiation risk.','alert')})}
+ </div>`;
+ }
+ if(key==='comms'){
+ title='📡 EARTH LINK • MISSION CONTROL';
+ body=`<p>Send a status packet to Earth. Mission control replies after a simulated one-way light-time delay.</p><div class="science">SCIENCE LINK — Radio signals travel at light speed. NASA explains that one-way Mars communication delay can reach roughly 21–23 minutes depending on planetary distance. A real crew must act autonomously; this game compresses the wait into seconds.</div><div class="choices">
+ ${action('Transmit crew status','Costs 3 power • receive delayed advice',()=>{if(s.power<3)return toast('Not enough power');s.power-=3;s.score+=5;log('Status packet transmitted. Waiting for light-time…');close();setTimeout(()=>{s.comms=true;let msgs=['Mission Control: Prioritise oxygen reserve before non-critical science.','Mission Control: Dust loading is reducing solar output. Schedule panel cleaning.','Mission Control: Greenhouse irrigation is a power-water trade. Recycle carefully.','Mission Control: Radiation alert response is a crew decision; do not wait for Earth.'];let msg=msgs[Math.floor(Math.random()*msgs.length)];log(msg,'good');toast('Delayed message received from Earth');render()},6500)})}
+ ${action('Review communication delay','No cost • learn the light-time constraint',()=>{s.score+=2;log('Signal delay is set to 22 minutes one-way in this scenario.');toast('Earth is not an instant-response help desk.')})}
+ </div>`;
+ }
+ modal(title,body);
+ $('modalBody').querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>{if(b.disabled)return;let label=decodeURIComponent(b.dataset.action);const powerCosts={'Service oxygen recycler':12,'Replace CO₂ scrubber cartridge':8,'Brush panels clean':5,'Deploy extra panel wing':12,'Plant / tend crops':8,'Recycle irrigation water':5,'Enter storm shelter':10,'Inspect shielding seals':4,'Transmit crew status':3};
+ if(powerCosts[label] && s.power<powerCosts[label]) return toast('Not enough power for this action');
+ if(label==='Plant / tend crops' && s.water<7) return toast('Not enough water for crop tending');
+ if(label==='Harvest ready crops' && s.crops<2) return toast('Crops need two tending cycles first');
+ let fnMap={
+ 'Service oxygen recycler':()=>{s.power-=12;s.oxygen=clamp(s.oxygen+22);s.score+=12;log('Oxygen recycler serviced. Cabin reserve restored.','good')},
+ 'Replace CO₂ scrubber cartridge':()=>{s.power-=8;s.oxygen=clamp(s.oxygen+14);s.score+=8;log('CO₂ scrubber cartridge replaced.','good')},
+ 'Emergency low-power mode':()=>{s.power=clamp(s.power+8);s.oxygen=clamp(s.oxygen-4);s.score+=4;log('Non-essential habitat loads throttled.')},
+ 'Brush panels clean':()=>{s.power-=5;s.dust=clamp(s.dust-55);s.score+=10;log('Solar panels cleaned.','good')},
+ 'Deploy extra panel wing':()=>{s.power-=12;s.power=clamp(s.power+18);s.score+=10;log('Auxiliary panel wing deployed.','good')},
+ 'Power conservation protocol':()=>{s.power=clamp(s.power+10);s.score+=5;log('Crew switched off non-critical equipment.')},
+ 'Plant / tend crops':()=>{s.water-=7;s.power-=8;s.crops++;s.score+=8;log('Greenhouse crop cycle advanced.','good')},
+ 'Harvest ready crops':()=>{s.crops=0;s.food=clamp(s.food+25);s.harvested=true;s.score+=18;log('Fresh produce harvested.','good')},
+ 'Recycle irrigation water':()=>{s.power-=5;s.water=clamp(s.water+12);s.score+=6;log('Water recovered.')},
+ 'Enter storm shelter':()=>{s.power-=10;s.rad=clamp(s.rad-22);s.shield=true;s.score+=12;log('Crew secured in storm shelter.','good')},
+ 'Inspect shielding seals':()=>{s.power-=4;s.rad=clamp(s.rad-8);s.score+=7;log('Shelter seals reinforced.','good')},
+ 'Stay outside and continue work':()=>{s.rad=clamp(s.rad+10);s.score+=2;log('Crew continued exterior work.','alert')},
+ 'Transmit crew status':()=>{s.power-=3;s.score+=5;log('Status packet transmitted. Waiting for light-time…');close();setTimeout(()=>{s.comms=true;log('Mission Control: Your crew must make sound autonomous decisions.','good');toast('Delayed Earth message received');render()},6500)},
+ 'Review communication delay':()=>{s.score+=2;log('Signal delay: 22 minutes one-way in this scenario.');toast('Earth cannot respond instantly.')}
+ };fnMap[label]?.();render();if(label!=='Transmit crew status')close()});
+}
+document.querySelectorAll('[data-station]').forEach(el=>el.addEventListener('click',()=>station(el.dataset.station)));
+function move(dx,dy){if(!s.alive||s.ended)return;s.x=Math.max(5,Math.min(88,s.x+dx));s.y=Math.max(8,Math.min(45,s.y+dy));render()}
+$('left').onclick=()=>move(-5,0);$('rightMove').onclick=()=>move(5,0);$('up').onclick=()=>move(0,4);$('down').onclick=()=>move(0,-4);
+document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')move(-4,0);if(e.key==='ArrowRight')move(4,0);if(e.key==='ArrowUp')move(0,3);if(e.key==='ArrowDown')move(0,-3)});
+function randomEvent(){
+ let r=Math.random();
+ if(r<.24){s.weather='DUST FRONT';s.dust=clamp(s.dust+18);s.power=clamp(s.power-9);log('Dust front: panel output falls. Clean the array when safe.','alert')}
+ else if(r<.42){s.weather='SOLAR WATCH';s.rad=clamp(s.rad+17);log('Solar particle alert: radiation index rising. Use the shelter.','alert')}
+ else if(r<.60){s.weather='MICROMETEOROLOGY';s.water=clamp(s.water-8);log('Thermal-control leak: water reserve loss detected.','alert')}
+ else if(r<.76){s.weather='CLEAR';s.power=clamp(s.power+9);log('Clear-sky window: solar array charges the battery.','good')}
+ else{s.weather='CALM';s.food=clamp(s.food+3);log('Crew morale and ration audit: small food efficiency gain.','good')}
+}
+function fail(reason){s.alive=false;s.ended=true;endScreen(false,reason)}
+function endSol(){
+ if(!s.alive||s.ended)return;
+ // one-sol baseline use
+ s.oxygen=clamp(s.oxygen-7);s.food=clamp(s.food-7);s.water=clamp(s.water-6);
+ let generation=Math.max(2,Math.round((17-s.dust*.13)));s.power=clamp(s.power+generation-11);
+ if(s.greenhouseOn){s.power=clamp(s.power-3);s.water=clamp(s.water-2)}
+ if(s.rad>45){s.oxygen=clamp(s.oxygen-2);log('High radiation stress increases crew-system load.','alert')}
+ if(s.oxygen<=0)return fail('Oxygen reserve depleted. The habitat could not sustain the crew.');
+ if(s.food<=0||s.water<=0)return fail('Essential consumables exhausted. The crew can no longer sustain the mission.');
+ if(s.power<=0)return fail('Battery depleted. Critical habitat systems lost power.');
+ if(s.rad>=100)return fail('Radiation exposure index reached a critical level.');
+ s.score+=5;
+ if(s.sol===10){endScreen(true,'You completed all ten sols.');return}
+ s.sol++;s.shield=false;randomEvent();render();
+ if(s.oxygen<25||s.power<15||s.food<15||s.water<15||s.rad>70)toast('WARNING: One or more systems are approaching critical levels.');
+ render();
+}
+function endScreen(win,reason){
+ let done=['life','power','food','rad','crop','comms'].filter(k=>({life:s.oxygen>25,power:s.power>15,food:s.food>15,rad:s.rad<70,crop:s.harvested,comms:s.comms})[k]).length;
+ let rank=win?(done>=5?'MISSION SPECIALIST':'MISSION SURVIVOR'):'MISSION ABORTED';
+ modal(win?'🏆 MISSION COMPLETE':'🚨 MISSION FAILURE',`<p><b>${reason}</b></p><div class="report-grid"><div><span class="stat-note">FINAL SCORE</span><b>${s.score}</b></div><div><span class="stat-note">RANK</span><b style="font-size:15px">${rank}</b></div><div><span class="stat-note">OXYGEN</span><b>${s.oxygen}%</b></div><div><span class="stat-note">POWER</span><b>${s.power}%</b></div><div><span class="stat-note">FOOD</span><b>${s.food}%</b></div><div><span class="stat-note">RADIATION INDEX</span><b>${s.rad}%</b></div></div><p>OBJECTIVES COMPLETED: ${done}/6 • SOL REACHED: ${Math.min(s.sol,10)}</p><div class="science"><b>MISSION DEBRIEF</b><br>${win?'Your crew balanced interconnected life-support systems and survived a ten-sol deployment.':'Review the resource trend: every action had a cost, and system failures cascaded across the habitat.'} Real mission planning uses engineering margins, redundancy, monitoring and crew autonomy — not a single perfect choice.</div><div class="choices"><button class="primary" id="again">↻ REPLAY MISSION</button><button id="print">🖨 PRINT / SAVE REPORT</button></div>`);
+ $('again').onclick=()=>location.reload();$('print').onclick=()=>window.print();
+}
+$('nextSol').onclick=endSol;
+$('helpBtn').onclick=()=>modal('HOW TO PLAY',`<p><b>Your goal:</b> survive ten sols and complete as many mission objectives as possible.</p><ul><li>Tap the habitat, solar array, greenhouse, radiation shelter or Earth link to operate it.</li><li>Actions consume resources as well as restore them. Read each cost before choosing.</li><li>Move your astronaut with the arrow buttons or keyboard arrows.</li><li>At the end of each sol, oxygen, food and water are consumed; solar generation is reduced by dust.</li><li>Random weather events can damage systems. Prepare before ending a sol.</li><li>Keep oxygen, food, water and power above zero. Radiation index reaching 100 ends the mission.</li></ul><div class="science">All percentages, costs, rates and random events are game-balancing values, not measured NASA engineering specifications.</div><h3 style="margin-top:14px">NASA SCIENCE REFERENCES & CREDITS</h3><p><a style="color:#9ed9ec" target="_blank" rel="noopener" href="https://science.nasa.gov/mars/facts/">NASA Mars Facts</a> • <a style="color:#9ed9ec" target="_blank" rel="noopener" href="https://www.nasa.gov/space-technology-mission-directorate/tdm/mars-oxygen-in-situ-resource-utilization-experiment-moxie/">NASA MOXIE oxygen experiment</a> • <a style="color:#9ed9ec" target="_blank" rel="noopener" href="https://www.nasa.gov/hrp/hazard-distance-from-earth/">NASA Human Spaceflight: Distance from Earth</a> • <a style="color:#9ed9ec" target="_blank" rel="noopener" href="https://www.nasa.gov/wp-content/uploads/2024/01/mars-communications-disruption-and-delay.pdf">NASA Mars communications delay paper</a> • <a style="color:#9ed9ec" target="_blank" rel="noopener" href="https://www.nasa.gov/humans-in-space/humans-to-mars/">NASA Humans to Mars</a>.</p><p class="small">Science content and source links: NASA / NASA Science / NASA Human Research Program. Game design, artwork and simulation mechanics: NovaCrew. NASA is not affiliated with or endorsing this student project.</p>`);
+$('mapBtn').onclick=()=>modal('MISSION OBJECTIVES',`<p>Mission success is more than surviving. Aim to finish with strong reserves and complete the six objectives:</p><ul><li>Oxygen above 25%</li><li>Power above 15%</li><li>Food above 15%</li><li>Radiation index below 70%</li><li>Harvest at least one greenhouse crop</li><li>Receive a delayed message from Earth</li></ul><p>Each good engineering decision earns score. You can survive without completing every optional objective.</p>`);
+$('startGame').onclick=()=>{$('intro').style.display='none';log('Mission commander, you have control. Inspect all five stations before ending Sol 1.','good');render()};
+render();
+})();
+</script>
+</body></html>
