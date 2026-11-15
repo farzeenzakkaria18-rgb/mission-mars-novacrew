@@ -180,4 +180,101 @@ $('startGame').onclick=()=>{$('intro').style.display='none';log('Mission command
 render();
 })();
 </script>
+ <!-- NASA DONKI SPACE WEATHER DATA -->
+<section id="nasa-donki" style="
+background:#101c32;
+color:white;
+padding:22px;
+margin:20px;
+border-radius:15px;
+font-family:Arial,sans-serif;
+">
+<h2>🚀 LIVE NASA SPACE WEATHER DATA</h2>
+
+<p>NASA Solar Energetic Particle (SEP) Events</p>
+
+<div id="nasa-status">Connecting to NASA...</div>
+
+<div id="nasa-events"></div>
+
+<button onclick="loadNASAData()" style="
+padding:10px 18px;
+border:0;
+border-radius:8px;
+margin-top:12px;
+cursor:pointer;
+">
+Refresh NASA Data
+</button>
+
+<p style="font-size:12px;color:#aabbd0;">
+Source: NASA DONKI Space Weather Database.
+SEP events provide space-weather context for radiation hazards;
+they are not direct measurements of radiation on Mars.
+</p>
+</section>
+
+<script>
+async function loadNASAData() {
+    const status = document.getElementById("nasa-status");
+    const output = document.getElementById("nasa-events");
+
+    status.innerText = "Fetching real NASA data...";
+    output.innerHTML = "";
+
+    try {
+        const end = new Date();
+        const start = new Date();
+        start.setDate(end.getDate() - 30);
+
+        const formatDate = d => d.toISOString().split("T")[0];
+
+        const url =
+        `https://api.nasa.gov/DONKI/SEP?startDate=${formatDate(start)}&endDate=${formatDate(end)}&api_key=DEMO_KEY`;
+
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error("NASA API unavailable");
+        }
+
+        const events = await response.json();
+
+        status.innerText =
+        "NASA connection successful! Events found: " + events.length;
+
+        if (events.length === 0) {
+            output.innerHTML = "<p>No SEP events reported in this period.</p>";
+            return;
+        }
+
+        events.slice(0, 5).forEach(event => {
+            const card = document.createElement("div");
+
+            card.style.cssText =
+            "background:#203552;padding:12px;margin:10px 0;border-radius:9px;";
+
+            const heading = document.createElement("h3");
+            heading.textContent = "Solar Particle Event";
+
+            const time = document.createElement("p");
+            time.textContent = "Start: " + (event.eventTime || "Not available");
+
+            const instruments = document.createElement("p");
+            instruments.textContent =
+            "Instruments: " +
+            (event.instruments || []).map(i => i.displayName).join(", ");
+
+            card.append(heading, time, instruments);
+            output.appendChild(card);
+        });
+
+    } catch (error) {
+        status.innerText =
+        "NASA data could not be loaded. Please try again later.";
+    }
+}
+
+loadNASAData();
+</script>
 </body></html>
